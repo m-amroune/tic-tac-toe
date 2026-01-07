@@ -38,6 +38,11 @@ const Board = () => {
   // True = X plays, false = O plays
   const [isXNext, setIsXNext] = useState(true);
 
+  function handleReset() {
+    setSquares(Array(9).fill(""));
+    setIsXNext(true);
+  }
+
   return (
     <div className="squares">
       {squares.map((value, index) => (
@@ -61,6 +66,9 @@ const Board = () => {
           {value}
         </button>
       ))}
+      <button id="reset" onClick={handleReset}>
+        Reset
+      </button>
     </div>
   );
 };
