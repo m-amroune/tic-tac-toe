@@ -2,8 +2,9 @@ import React from "react";
 import { useState } from "react";
 import "../App.css";
 
+// Check if there is a winner on the board
 function calculateWinner(squares) {
-  // All possible winning combinations
+  // All winning combinations
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -18,7 +19,7 @@ function calculateWinner(squares) {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
 
-    // Check if the three squares have the same value
+    // If three squares have the same value, we have a winner
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
       return squares[a];
     }
@@ -29,45 +30,62 @@ function calculateWinner(squares) {
 }
 
 const Board = () => {
-  // Store the board state (9 squares)
+  // Board state (9 squares)
   const [squares, setSquares] = useState(Array(9).fill(""));
 
-  // Check if there is a winner
-  const winner = calculateWinner(squares);
-
-  // True = X plays, false = O plays
+  // Track which player plays next
   const [isXNext, setIsXNext] = useState(true);
 
+  // Check game result
+  const winner = calculateWinner(squares);
+  const isDraw = squares.every((square) => square !== "") && !winner;
+
+  // Game status message
+  let status;
+  if (winner) {
+    status = `Winner: ${winner}`;
+  } else if (isDraw) {
+    status = "Draw";
+  } else {
+    status = `Next Player: ${isXNext ? "X" : "O"}`;
+  }
+
+  // Reset the game
   function handleReset() {
     setSquares(Array(9).fill(""));
     setIsXNext(true);
   }
 
   return (
-    <div className="squares">
-      {squares.map((value, index) => (
-        <button
-          key={index}
-          className="square"
-          onClick={() => {
-            // Stop game if there is a winner
-            if (winner) return;
+    <div>
+      <p>{status}</p>
 
-            const next = [...squares];
+      <div className="squares">
+        {squares.map((value, index) => (
+          <button
+            key={index}
+            className="square"
+            onClick={() => {
+              // Stop if game is finished
+              if (winner || isDraw) return;
 
-            // Put X or O in the clicked square
-            next[index] = isXNext ? "X" : "O";
+              // Ignore click if square is already used
+              if (squares[index]) return;
 
-            // Update board and change player
-            setSquares(next);
-            setIsXNext(!isXNext);
-          }}
-        >
-          {value}
-        </button>
-      ))}
+              const next = [...squares];
+              next[index] = isXNext ? "X" : "O";
+
+              setSquares(next);
+              setIsXNext(!isXNext);
+            }}
+          >
+            {value}
+          </button>
+        ))}
+      </div>
+
       <button id="reset" onClick={handleReset}>
-        Reset
+        Reset Game
       </button>
     </div>
   );

@@ -29,3 +29,9 @@ p {
   aspect-ratio: 1 / 1;
   font-size: 2rem;
 }
+
+#reset {
+  font-size: 1rem;
+  margin-top: 1rem;
+  padding: 1rem;
+}
