@@ -1,16 +1,30 @@
-# React + Vite
+# Project : Tic-Tac-Toe Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## About the Project
 
-Currently, two official plugins are available:
+**Objective** : Build a Tic-Tac-Toe game using React. The game renders a 3x3 board of clickable squares, alternates turns between X and O, stops interaction once a player has won, includes a reset button, and displays a message for a winner or a draw. The project follows FreeCodeCamp’s front-end certification requirements.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## User Stories
 
-## React Compiler
+- User Story #1: You should create a Board component that renders nine button elements each with a class of `square` in a 3x3 grid.
+- User Story #2: Clicking `button.square` elements should alternate between displaying an `X` then `O` within the element.
+- User Story #3: Once a player has won the game, clicking on any `button.square` should not cause any further changes.
+- User Story #4: You should create a `button#reset` element that resets the game when clicked.
+- User Story #5: A message should be displayed indicating either `X` or `O` as the winner, or neither if the result is a draw.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Langages and Technologies
 
-## Expanding the ESLint configuration
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white&style=flat)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white&style=flat)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black&style=flat)
+![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black&style=flat)
+![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white&style=flat)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Installation
+
+```bash
+git clone https://github.com/m-amroune/tic-tac-toe.git
+cd tic-tac-toe
+npm install
+npm run dev
+
